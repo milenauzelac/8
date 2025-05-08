@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Buchstabenstrom erweitert</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      font-family: "Suisse BP Int'l", Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #wort {
+      font-size: 5em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<div id="wort">START</div>
+
+<script>
+const realeWoerter = [
+  "AKTION", "AKT", "BANK", "BIOTIN", "BISS", "BOOT", "CANVAS", "CASANOVA",
+  "CASINO", "IKON", "INSTINKT", "KANON", "KINO", "KIOSK", "KITA", "KNAST",
+  "KONTAKT", "KOST", "NANO", "NATION", "NIKOTIN", "OKTAV", "SOS", "STAB",
+  "STATION", "STOCK", "TABAK", "TAKTIK", "TAT", "TOAST", "VATIKAN"
+];
+
+const fastNamenWoerter = [
+  "SANTIKO", "BASKITO", "NIKOTA", "KASTINO", "TOBASK", "INKABA", "STANKO",
+  "CONKITA", "IKOSTAN", "TANKISO", "OBASKIN", "NABOKIS", "BASKION", "OKTANA",
+  "CSCANCB","CCOABIA","AISCBI","BKSTO","KCBTSCS","SSNOKSK","AINIBII","IOBIOKS","ITTBII","IITOTS","OSSANOSK","BSKCTN","OOICKIB","OOAKTCC","IBNKTC","KKAISN","KITCBBN","BNBCKK","ACCTAS","ASCCIA"
+];
+
+const wirrKombinationen = [
+  "OT", "KNC", "ASOK", "BIKTO", "STNKIA", "COSABNT", "KINOSTAB", "BATSKONIC",
+  "IKTOSNABKC", "NSTABOKICNT",
+  "BCCNSTAO","NAA","TSAAN","IIBOC","BTNNTC","ABCBIAKO","KCINKINOA","KKKINTCOC","AITBABI","NICB","ABNBCII","TBSBOCIKT","TCK","BTAAT","ASAOT","KNOT","SCT","OOTS","ANAN","OKBNCTTO"
+];
+
+function waehleAusListe(liste) {
+  return liste[Math.floor(Math.random() * liste.length)];
+}
+
+function neuesElement() {
+  const zufall = Math.random();
+  let wort = "";
+
+  if (zufall < 0.25) {
+    wort = waehleAusListe(realeWoerter);
+  } else if (zufall < 0.70) {
+    wort = waehleAusListe(fastNamenWoerter);
+  } else {
+    wort = waehleAusListe(wirrKombinationen);
+  }
+
+  document.getElementById("wort").textContent = wort.toUpperCase();
+}
+
+neuesElement();
+setInterval(neuesElement, 1000);
+</script>
+
+</body>
+</html>
